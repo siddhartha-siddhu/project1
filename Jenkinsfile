@@ -10,26 +10,26 @@ pipeline
 				checkout scm
 			}
 		}
-		stage("install apache2")
+		stage("install nginx")
 		{
 			steps
 			{
 				sh "sudo apt update -y"
-				sh "sudo apt install -y apache2"
+				sh "sudo apt install -y nginx"
 			}
 		}
 		stage("Deploy the website")
 		{
 			steps
 			{
-				sh "sudo cp /project1/index.html /var/www/html/index.html"
+				sh "sudo cp /project1/index.html /usr/share/nginx/html/index.html"
 			}
 		}
-		stage("start the apache2")
+		stage("start the nginx")
 		{
 			steps
 			{
-				sh "sudo systemctl start apache2"
+				sh "sudo systemctl start nginx"
 			}
 		}
 		stage("Git information")
