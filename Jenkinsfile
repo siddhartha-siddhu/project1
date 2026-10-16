@@ -32,5 +32,14 @@ pipeline
 				sh "sudo systemctl start apache2"
 			}
 		}
+		stage("Git information")
+		{
+			steps
+			{
+				sh "git branch"
+				sh "git log"
+				sh "git log --oneline"
+			}
+		}
 	}
 }
